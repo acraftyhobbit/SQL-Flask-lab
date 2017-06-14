@@ -8,8 +8,8 @@
     <h1>{{ first }} {{ last }}</h1>
 
     <p>GitHub Account: {{ github }}</p>
-    <ul>{% for t, g in title_grade %}
-        <li>{{ t, g }}</li>
+    <ul>{% for title, grade in titles_grades %}
+        <li><a href="/project?title={{title}}">{{ title }}</a>, {{ grade }}</li>
         {% endfor %}
     </ul>
 </body>

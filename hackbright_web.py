@@ -15,7 +15,7 @@ def get_student():
 
     first, last, github = hackbright.get_student_by_github(github)
 
-    title_grade = hackbright.get_grades_by_github(github)
+    titles_grades = hackbright.get_grades_by_github(github)
 
 
 
@@ -23,7 +23,7 @@ def get_student():
                             first=first,
                             last=last,
                             github=github,
-                            title_grade=title_grade)
+                            titles_grades=titles_grades)
 
     # return "{acct} is the GitHub account for {first} {last}".format(
     #     acct=github, first=first, last=last)
@@ -64,6 +64,34 @@ def new_student():
                             last_name=last_name, 
                             github=github)
 
+@app.route("/project")
+def project_info():
+    """Shows project info."""
+
+    link_title = request.args.get('title')
+
+    title, description, max_grade = hackbright.get_project_by_title(link_title)
+
+    students_grades = hackbright.get_grades_by_title(link_title)
+
+    return render_template("project.html", 
+                            title=title,
+                            description=description,
+                            maximum_grade=max_grade,
+                            students_grades=students_grades)
+
+
+@app.route("/")
+def homepage():
+    """Displays list of students and projects."""
+
+    projects = hackbright.get_grades_by_github(github)
+
+    students = hackbright.get_grades_by_title(title)
+
+    return render_template("homepage.html",
+                            projects=projects,
+                            students=students)
 
 
 
