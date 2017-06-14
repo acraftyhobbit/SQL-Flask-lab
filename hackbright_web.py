@@ -15,14 +15,15 @@ def get_student():
 
     first, last, github = hackbright.get_student_by_github(github)
 
-    hackbright.get_project_by_title()
-    hackbright.get_grade_by_github_title()
+    title_grade = hackbright.get_grades_by_github(github)
+
 
 
     html = render_template("student_info.html", 
                             first=first,
                             last=last,
-                            github=github)
+                            github=github,
+                            title_grade=title_grade)
 
     # return "{acct} is the GitHub account for {first} {last}".format(
     #     acct=github, first=first, last=last)

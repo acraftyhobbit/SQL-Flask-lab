@@ -8,5 +8,9 @@
     <h1>{{ first }} {{ last }}</h1>
 
     <p>GitHub Account: {{ github }}</p>
+    <ul>{% for t, g in title_grade %}
+        <li>{{ t, g }}</li>
+        {% endfor %}
+    </ul>
 </body>
 </html>
